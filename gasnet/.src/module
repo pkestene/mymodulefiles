@@ -1,0 +1,37 @@
+#%Module1.0
+####################################################
+## Modulefile for GASNet
+####################################################
+
+proc ModulesHelp { } {
+    puts stderr "Sets the environment for GASNet"
+}
+
+module-whatis "sets the environment for using GASNet"
+
+conflict gasnet
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted 0]
+
+# module config
+set version [lindex $fullname_splitted 1]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/local/gasnet-$version
+
+prepend-path  PATH              $topdir/bin
+prepend-path  LD_LIBRARY_PATH   $topdir/lib
+
+setenv GASNET_VERSION             $version
+setenv GASNET_ROOT                $topdir
+setenv GASNET_DIR                 $topdir
+setenv GASNET_BIN_DIR             $topdir/bin
+setenv GASNET_INC_DIR             $topdir/include
+setenv GASNET_LIB_DIR             $topdir/lib

@@ -1,0 +1,40 @@
+#%Module1.0
+# -*- mode: Tcl;-*-
+####################################################
+## Modulefile for computecpp
+####################################################
+
+conflict computecpp
+
+proc ModulesHelp { } {
+    puts stderr "ComputeCpp compiler (from CodePlay) for SYCL"
+}
+
+module-whatis "sets the environment for using ComputeCpp compiler"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted 0]
+
+# module config
+set version [lindex $fullname_splitted 1]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/install/codeplay/ComputeCpp-CE-${version}-x86_64-linux-gnu
+
+prepend-path  PATH              $topdir/bin
+prepend-path  LD_LIBRARY_PATH   $topdir/lib
+#prepend-path  MANPATH           $topdir/man
+
+setenv COMPUTECPP_VERSION             $version
+setenv COMPUTECPP_ROOT                $topdir
+setenv COMPUTECPP_DIR                 $topdir
+setenv ComputeCpp_DIR                 $topdir
+setenv COMPUTECPP_PACKAGE_ROOT_DIR    $topdir
+setenv COMPUTECPP_INC_DIR             $topdir/include
+setenv COMPUTECPP_LIB_DIR             $topdir/lib

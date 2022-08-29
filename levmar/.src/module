@@ -1,0 +1,39 @@
+#%Module1.0
+# -*- mode: Tcl;-*-
+####################################################
+## Modulefile for levmar
+####################################################
+
+proc ModulesHelp { } {
+    puts stderr "LEVMAR"
+}
+
+module-whatis "sets the environment for using LEVMAR"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted 0]
+
+# module config
+set version [lindex $fullname_splitted 1]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/local/levmar-$version
+
+conflict levmar
+prepend-path  PATH              $topdir/bin
+prepend-path  MANPATH           $topdir/man
+prepend-path  LD_LIBRARY_PATH   $topdir/lib
+prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
+prepend-path  CMAKE_PREFIX_PATH $topdir/lib/cmake
+
+setenv levmar_ROOT                $topdir
+setenv LEVMAR_VERSION             $version
+setenv LEVMAR_BIN_DIR             $topdir/bin
+setenv LEVMAR_INC_DIR             $topdir/include
+setenv LEVMAR_LIB_DIR             $topdir/lib

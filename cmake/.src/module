@@ -1,0 +1,32 @@
+#%Module1.0
+####################################################
+## Modulefile for cmake
+####################################################
+
+proc ModulesHelp { } {
+    puts stderr "CMAKE"
+}
+
+module-whatis "sets the environment for using CMAKE"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted 0]
+
+# module config
+set version [lindex $fullname_splitted 1]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/local/cmake-${version}
+
+conflict cmake
+setenv        CMAKE_ROOT        $topdir
+prepend-path  PATH              $topdir/bin
+prepend-path  MANPATH           $topdir/share/man
+#prepend-path  LD_LIBRARY_PATH   $topdir/lib
+#prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
