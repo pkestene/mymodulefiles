@@ -41,6 +41,7 @@ setenv CUDA_BIN_DIR             $topdir/bin
 setenv CUDA_LIB_DIR             $topdir/lib64
 setenv CUDA_PATH                $topdir
 setenv CUDA_ROOT                $topdir
+setenv CUDA_HOME                $topdir
 
 setenv CUDA_DRIVER_LIB_PATH     /usr/lib
 
