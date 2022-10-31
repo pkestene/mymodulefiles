@@ -3,14 +3,14 @@
 ```shell
 git clone git@github.com:kokkos/kokkos.git
 cd kokkos
-git checkout 3.6.01
+git checkout 3.7.00
 ```
 
 # Build Kokkos for OpenMP with gnu tool toolchain
 
 ```shell
 export GNU_VERSION=11
-export KOKKOS_VERSION=3.6.01
+export KOKKOS_VERSION=3.7.00
 module load gnu/$GNU_VERSION
 cd kokkos
 BUILD_DIR=build/$KOKKOS_VERSION/openmp-gnu-$GNU_VERSION
@@ -25,8 +25,8 @@ make install
 
 ```shell
 export GNU_VERSION=11
-export KOKKOS_VERSION=3.6.01
-export CUDA_VERSION=11.7
+export KOKKOS_VERSION=3.7.00
+export CUDA_VERSION=11.8
 module load gnu/$GNU_VERSION
 module load cuda/$CUDA_VERSION
 cd kokkos

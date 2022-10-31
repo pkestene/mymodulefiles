@@ -9,7 +9,7 @@ git clone git@github.com:kokkos/kokkos-fortran-interop.git
 ```shell
 cd kokkos-fortran-interop
 GNU_VERSION=11
-KOKKOS_VERSION=3.6.01
+KOKKOS_VERSION=3.7.00
 
 module load gnu/$GNU_VERSION
 module load kokkos/$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION
@@ -27,8 +27,8 @@ make install
 ```shell
 cd kokkos-fortran-interop
 GNU_VERSION=11
-CUDA_VERSION=11.7
-KOKKOS_VERSION=3.6.01
+CUDA_VERSION=11.8
+KOKKOS_VERSION=3.7.00
 
 module load gnu/$GNU_VERSION
 module load cuda/$CUDA_VERSION
