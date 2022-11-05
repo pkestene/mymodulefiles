@@ -1,0 +1,11 @@
+# example build for serial
+
+VERSION=0.3.21-serial
+tar zxf OpenBLAS-0.3.21.tar.gz
+cd OpenBLAS-0.3.21
+mkdir build/$VERSION
+cd build/$VERSION
+
+ccmake -DUSE_OPENMP=OFF -DUSE_THREAD=OFF -DC_LAPACK=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$HOME/local/OpenBLAS-$VERSION ../..
+make -j 16
+make install
