@@ -1,0 +1,43 @@
+#%Module1.0
+# -*- mode: Tcl;-*-
+####################################################
+## Modulefile for rocm
+####################################################
+
+proc ModulesHelp { } {
+    puts stderr "ROCM"
+}
+
+module-whatis "sets the environment for using ROCM"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted 0]
+
+# module config
+set version_full [lindex $fullname_splitted 1]
+
+set version_splitted [split $version_full -]
+set version [lindex $version_splitted 0]
+set gpu_arch [lindex $version_splitted 1]
+
+# for Tcl script use only
+set     topdir          /opt/rocm-${version}
+
+conflict rocm
+setenv        ROCM_ROOT         $topdir
+setenv        AOMP              $topdir/llvm
+setenv        AOMP_GPU          $gpu_arch
+setenv        ROCM_EXEDIR       $topdir/bin:$topdir/llvm/bin
+setenv        ROCM_LIBDIR       $topdir/lib64:$topdir/lib:$topdir/llvm/lib
+
+prepend-path  PATH              $topdir/bin:$topdir/llvm/bin
+prepend-path  MANPATH           $topdir/share/man
+prepend-path  LD_LIBRARY_PATH   $topdir/lib64:$topdir/lib:$topdir/llvm/lib
+prepend-path  PKG_CONFIG_PATH   $topdir/share/pkgconfig
+prepend-path  CMAKE_PREFIX_PATH $topdir/lib/cmake
