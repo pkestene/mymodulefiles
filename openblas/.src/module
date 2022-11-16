@@ -25,15 +25,23 @@ set version [lindex $fullname_splitted 1]
 # for Tcl script use only
 set     topdir          $env(HOME)/local/OpenBLAS-$version
 
+if {[file isdirectory $topdir/lib]} {
+   set openblas_libdir $topdir/lib
+} elseif {[file isdirectory $topdir/lib64]} {
+   set openblas_libdir $topdir/lib64
+} else {
+   puts stderr "Can't manage to guess OpenBLAS libdir !"
+}
+
 conflict openblas
 prepend-path  PATH              $topdir/bin
 prepend-path  MANPATH           $topdir/man
-prepend-path  LD_LIBRARY_PATH   $topdir/lib
-prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
+prepend-path  LD_LIBRARY_PATH   $openblas_libdir
+prepend-path  PKG_CONFIG_PATH   $openblas_libdir/pkgconfig
 prepend-path  CMAKE_PREFIX_PATH $topdir/share/cmake
 
 setenv openblas_ROOT                $topdir
 setenv OPENBLAS_VERSION             $version
 setenv OPENBLAS_BIN_DIR             $topdir/bin
 setenv OPENBLAS_INC_DIR             $topdir/include
-setenv OPENBLAS_LIB_DIR             $topdir/lib
+setenv OPENBLAS_LIB_DIR             $openblas_libdir
