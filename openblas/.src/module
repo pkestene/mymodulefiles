@@ -30,7 +30,7 @@ prepend-path  PATH              $topdir/bin
 prepend-path  MANPATH           $topdir/man
 prepend-path  LD_LIBRARY_PATH   $topdir/lib
 prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
-prepend-path  CMAKE_PREFIX_PATH $topdir/lib/cmake
+prepend-path  CMAKE_PREFIX_PATH $topdir/share/cmake
 
 setenv openblas_ROOT                $topdir
 setenv OPENBLAS_VERSION             $version
