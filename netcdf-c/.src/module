@@ -24,10 +24,18 @@ set version [lindex $fullname_splitted 1]
 # for Tcl script use only
 set     topdir          $env(HOME)/local/netcdf-c-${version}
 
+if {[file isdirectory $topdir/lib]} {
+   set netcdf_c_libdir $topdir/lib
+} elseif {[file isdirectory $topdir/lib64]} {
+   set netcdf_c_libdir $topdir/lib64
+} else {
+   puts stderr "Can't manage to guess netcdf-c libdir !"
+}
+
 conflict netcdf-c
 setenv        netCDF_ROOT       $topdir
 prepend-path  PATH              $topdir/bin
 prepend-path  MANPATH           $topdir/share/man
-prepend-path  LD_LIBRARY_PATH   $topdir/lib
-prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
-prepend-path  CMAKE_PREFIX_PATH $topdir/lib/cmake
+prepend-path  LD_LIBRARY_PATH   $netcdf_c_libdir
+prepend-path  PKG_CONFIG_PATH   $netcdf_c_libdir/pkgconfig
+prepend-path  CMAKE_PREFIX_PATH $netcdf_c_libdir/cmake
