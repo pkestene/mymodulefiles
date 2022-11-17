@@ -24,10 +24,10 @@ set version [lindex $fullname_splitted 1]
 # for Tcl script use only
 set     topdir          $env(HOME)/local/netcdf-c-${version}
 
-if {[file isdirectory $topdir/lib]} {
-   set netcdf_c_libdir $topdir/lib
-} elseif {[file isdirectory $topdir/lib64]} {
+if {[file isdirectory $topdir/lib64]} {
    set netcdf_c_libdir $topdir/lib64
+} elseif {[file isdirectory $topdir/lib]} {
+   set netcdf_c_libdir $topdir/lib
 } else {
    puts stderr "Can't manage to guess netcdf-c libdir !"
 }
