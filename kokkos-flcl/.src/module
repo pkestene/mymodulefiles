@@ -28,8 +28,16 @@ set version [lindex $fullname_splitted 1]
 # for Tcl script use only
 set     topdir          $env(HOME)/local/kokkos-flcl-$version
 
-prepend-path PATH              $topdir/bin
-prepend-path LD_LIBRARY_PATH   $topdir/lib
-prepend-path CMAKE_PREFIX_PATH  $topdir/lib/cmake
+if {[file isdirectory $topdir/lib64]} {
+   set kokkos_flcl_libdir $topdir/lib64
+} elseif {[file isdirectory $topdir/lib]} {
+   set kokkos_flcl_libdir $topdir/lib
+} else {
+   puts stderr "Can't manage to guess kokkos-flcl libdir !"
+}
+
+prepend-path PATH               $topdir/bin
+prepend-path LD_LIBRARY_PATH    $kokkos_flcl_libdir/lib
+prepend-path CMAKE_PREFIX_PATH  $kokkos_flcl_libdir/cmake
 
 unset version
