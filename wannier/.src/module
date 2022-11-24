@@ -16,10 +16,10 @@ set fullname [module-info name]
 set fullname_splitted [split $fullname /]
 
 # modulefile name
-set product [lindex $fullname_splitted 0]
+set product [lindex $fullname_splitted end-1]
 
 # module config
-set version [lindex $fullname_splitted 1]
+set version [lindex $fullname_splitted end]
 
 # for Tcl script use only
 set     topdir          $env(HOME)/local/wannier-${version}

@@ -17,10 +17,10 @@ set fullname [module-info name]
 set fullname_splitted [split $fullname /]
 
 # modulefile name
-set product [lindex $fullname_splitted 0]
+set product [lindex $fullname_splitted end-1]
 
 # module config
-set version_full [lindex $fullname_splitted 1]
+set version_full [lindex $fullname_splitted end]
 
 set version_splitted [split $version_full -]
 set version [lindex $version_splitted 0]
