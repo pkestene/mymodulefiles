@@ -4,7 +4,6 @@
 ## Modulefile for Cuda
 ####################################################
 
-
 proc ModulesHelp { } {
     puts stderr "Cuda - sets the environment for Cuda"
 }
@@ -34,8 +33,22 @@ prepend-path LD_LIBRARY_PATH   $topdir/extras/CUPTI/lib64
 
 prepend-path INCLUDE           $topdir/include
 
-setenv NVCCFLAGS               " -gencode=arch=compute_75,code=sm_75 "
-setenv CUDAFLAGS               " -arch=sm_75 "
+if { [info exists ::env(CUDA_ARCH)] } {
+
+    if { [string length $env(CUDA_ARCH)] != 2} {
+        #puts stderr "Environment variable CUDA_ARCH must be a 2-digit number, e.g. \"80\" !"
+        reportError "Environment variable CUDA_ARCH must be a 2-digit number, e.g. \"80\" !"
+        return
+    }
+
+    set CUDA_ARCH $env(CUDA_ARCH)
+} else {
+    # use default
+    set CUDA_ARCH 80
+    puts stderr "Using default cuda arch = ${CUDA_ARCH}"
+}
+setenv NVCCFLAGS               " -gencode=arch=compute_${CUDA_ARCH},code=sm_${CUDA_ARCH} "
+setenv CUDAFLAGS               " -arch=sm_${CUDA_ARCH} "
 
 setenv CUDA_BIN_DIR             $topdir/bin
 setenv CUDA_LIB_DIR             $topdir/lib64
