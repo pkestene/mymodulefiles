@@ -1,0 +1,44 @@
+#%Module1.0
+####################################################
+## Modulefile for openmpi
+####################################################
+
+conflict openmpi
+
+proc ModulesHelp { } {
+    puts stderr "OpenMPI"
+}
+
+module-whatis "sets the environment for using OPENMPI"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted end-1]
+
+# module config
+set version [lindex $fullname_splitted end]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/local/openmpi-${version}
+
+prepend-path MANPATH         "${topdir}/share/man"
+prepend-path LD_LIBRARY_PATH "${topdir}/lib"
+prepend-path PATH            "${topdir}/bin"
+
+# configure wrappers
+setenv OMPI_F77 "gfortran"
+setenv OMPI_F90 "gfortran"
+setenv OMPI_CC  "gcc"
+setenv OMPI_FC  "gfortran"
+setenv OMPI_CXX "g++"
+
+setenv MPI_HOME "${topdir}"
+
+# MPE environment
+#prepend-path LD_LIBRARY_PATH "/home/pkestene/local/mpe_openmpi-${version}/lib"
+#prepend-path            PATH "/home/pkestene/local/mpe_openmpi-${version}/bin"
