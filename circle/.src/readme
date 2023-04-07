@@ -1,0 +1,4 @@
+```shell
+wget https://www.circle-lang.org/linux/build_186.tgz
+tar zxf build_186.tgz
+```
