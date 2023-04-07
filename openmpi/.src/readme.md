@@ -11,6 +11,9 @@ oshrun -np 4 ./a.out
 [ladygaga:249799] ../../../../../../oshmem/mca/spml/ucx/spml_ucx.c:736  Error: mca_spml_ucx_ctx_mkey_cache failed
 [ladygaga:249799:0:249799] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x49)
 ```
+
+Make sure to install ucx: `sudo apt install libucx-dev` to enable shmem.
+
 Second, I want to have cuda support enabled by default.
 
 ```shell
