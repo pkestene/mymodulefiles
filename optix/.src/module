@@ -30,4 +30,7 @@ if { $version == "7.0.0" } {
 
 conflict optix
 
-setenv        OptiX_INSTALL_DIR  ${topdir}
+setenv OptiX_INSTALL_DIR  ${topdir}
+
+scan $version {%d.%d.%d} version_major version_minor version_patch
+setenv OPTIX${version_major}${version_minor}_PATH ${topdir}
