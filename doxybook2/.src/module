@@ -1,0 +1,33 @@
+#%Module1.0
+####################################################
+## Modulefile for doxybook2
+####################################################
+
+proc ModulesHelp { } {
+    puts stderr "DOXYBOOK2"
+}
+
+module-whatis "sets the environment for using DOXYBOOK2"
+
+# get module full name
+set fullname [module-info name]
+
+# split fullname into name/version
+set fullname_splitted [split $fullname /]
+
+# modulefile name
+set product [lindex $fullname_splitted end-1]
+
+# module config
+set version [lindex $fullname_splitted end]
+
+# for Tcl script use only
+set     topdir          $env(HOME)/local/doxybook2-${version}
+
+conflict doxybook2
+setenv        DOXYBOOK2_ROOT    $topdir
+prepend-path  PATH              $topdir/bin
+prepend-path  MANPATH           $topdir/share/man
+prepend-path  LD_LIBRARY_PATH   $topdir/lib
+prepend-path  PKG_CONFIG_PATH   $topdir/lib/pkgconfig
+prepend-path  CMAKE_PREFIX_PATH $topdir/lib/cmake
