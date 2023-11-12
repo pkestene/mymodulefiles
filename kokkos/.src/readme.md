@@ -1,18 +1,18 @@
 # Kokkos sources
 
-Retrieve the latest available release of kokkos : 3.7.01
+Retrieve the latest available release of kokkos : 4.1.00
 
 ```shell
 git clone git@github.com:kokkos/kokkos.git
 cd kokkos
-git checkout 3.7.01
+git checkout 4.1.00
 ```
 
 # Build Kokkos for OpenMP with gnu tool toolchain
 
 ```shell
 export GNU_VERSION=11
-export KOKKOS_VERSION=3.7.01
+export KOKKOS_VERSION=4.1.00
 
 module load gnu/$GNU_VERSION
 
@@ -29,8 +29,8 @@ make install
 
 ```shell
 export GNU_VERSION=11
-export KOKKOS_VERSION=3.7.01
-export CUDA_VERSION=11.8
+export KOKKOS_VERSION=4.1.00
+export CUDA_VERSION=12.3
 
 module load gnu/$GNU_VERSION
 module load cuda/$CUDA_VERSION
@@ -43,4 +43,3 @@ cmake -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_HWLOC=ON -DCMAKE_CXX_STANDARD=17
 make -j 6
 make install
 ```
-
