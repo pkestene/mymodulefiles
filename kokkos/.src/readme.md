@@ -31,6 +31,8 @@ make install
 
 # Build Kokkos for OpenMP and CUDA with gnu tool toolchain
 
+Note that cmake option `Kokkos_ENABLE_CUDA_LAMBDA` is deprecated since kokkos 4.1.00. Support for lambda function is required unconditionnally.
+
 ```shell
 export GNU_VERSION=11
 export KOKKOS_VERSION=4.1.00
@@ -47,7 +49,7 @@ INSTALL_DIR=$HOME/local/kokkos-$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSI
 
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
-cmake -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_HWLOC=ON -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_LAMBDA=ON -DKokkos_ENABLE_CUDA_CONSTEXPR=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ../../..
+cmake -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_HWLOC=ON -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_CUDA=ON -DKokkos_ENABLE_CUDA_CONSTEXPR=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE ../../..
 make -j 6
 make install
 ```
