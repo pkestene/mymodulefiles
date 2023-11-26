@@ -36,8 +36,8 @@ if {[file isdirectory $topdir/lib64]} {
    puts stderr "Can't manage to guess kokkos-kernels libdir !"
 }
 
-prepend-path PATH              $topdir/bin
-prepend-path LD_LIBRARY_PATH   $kokkos-kernels_libdir
-prepend-path CMAKE_PREFIX_PATH  $kokkos-kernels_libdir/cmake
+#prepend-path PATH              $topdir/bin
+prepend-path LD_LIBRARY_PATH    ${kokkos-kernels_libdir}
+prepend-path CMAKE_PREFIX_PATH  ${kokkos-kernels_libdir}/cmake
 
 unset version
