@@ -11,6 +11,8 @@ git checkout 4.1.00
 # Build Kokkos-Kernels for OpenMP with gnu tool toolchain
 
 ```shell
+cd kokkos-kernels
+
 export GNU_VERSION=11
 export KOKKOS_VERSION=4.1.00
 export KOKKOS_KERNELS_VERSION=4.1.00
@@ -20,7 +22,6 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 module load gnu/$GNU_VERSION
 module load kokkos/$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 
-cd kokkos-kernels
 BUILD_DIR=_build/$KOKKOS_KERNELS_VERSION/openmp-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 INSTALL_DIR=$HOME/local/kokkos-kernels-$KOKKOS_KERNELS_VERSION-openmp-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 
@@ -34,6 +35,8 @@ make install
 # Build Kokkos-Kernels for OpenMP and CUDA with gnu tool toolchain
 
 ```shell
+cd kokkos-kernels
+
 export GNU_VERSION=11
 export KOKKOS_VERSION=4.1.00
 export KOKKOS_KERNELS_VERSION=4.1.00
@@ -45,7 +48,6 @@ module load gnu/$GNU_VERSION
 module load kokkos/$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 module load cuda/$CUDA_VERSION
 
-cd kokkos-kernels
 BUILD_DIR=_build/$KOKKOS_KERNELS_VERSION/cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 INSTALL_DIR=$HOME/local/kokkos-kernels-$KOKKOS_KERNELS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 

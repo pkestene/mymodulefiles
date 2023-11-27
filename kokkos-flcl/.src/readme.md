@@ -8,16 +8,22 @@ git clone git@github.com:kokkos/kokkos-fortran-interop.git
 
 ```shell
 cd kokkos-fortran-interop
+
 GNU_VERSION=11
-KOKKOS_VERSION=3.7.01
+KOKKOS_VERSION=4.1.00
 
 module load gnu/$GNU_VERSION
 module load kokkos/$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION
 
-BUILD_DIR=build/$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
+BUILD_DIR=_build/$KOKKOS_VERSION/openmp-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
-cmake -DCMAKE_BUILD_TYPE=Release -DFLCL_BUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=$HOME/local/kokkos-flcl-$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION ../..
+
+INSTALL_DIR=$HOME/local/kokkos-flcl-$KOKKOS_VERSION-openmp-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
+
+cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DFLCL_BUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR ../../..
 make -j 6
 make install
 ```
@@ -26,19 +32,24 @@ make install
 
 ```shell
 cd kokkos-fortran-interop
+
 GNU_VERSION=11
 CUDA_VERSION=12.3
 KOKKOS_VERSION=4.1.00
 
+CMAKE_BUILD_TYPE=RelWithDebInfo
+
 module load gnu/$GNU_VERSION
 module load cuda/$CUDA_VERSION
-module load kokkos/$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION
+module load kokkos/$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 
-BUILD_DIR=build/$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION
+BUILD_DIR=_build/$KOKKOS_VERSION/cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
-cmake -DCMAKE_BUILD_TYPE=Release -DFLCL_BUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=$HOME/local/kokkos-flcl-$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION ../..
 
+INSTALL_DIR=$HOME/local/kokkos-flcl-$KOKKOS_VERSION-cuda-$CUDA_VERSION-gnu-$GNU_VERSION-$CMAKE_BUILD_TYPE
+
+cmake -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DFLCL_BUILD_EXAMPLES=ON -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR ../../..
 make -j 6
 make install
 ```
