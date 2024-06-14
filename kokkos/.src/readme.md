@@ -1,11 +1,11 @@
 # Kokkos sources
 
-Retrieve the latest available release of kokkos : 4.1.00
+Retrieve the latest available release of kokkos : 4.3.01
 
 ```shell
 git clone git@github.com:kokkos/kokkos.git
 cd kokkos
-git checkout 4.1.00
+git checkout 4.3.01
 ```
 
 # Build Kokkos for OpenMP with gnu tool toolchain
@@ -14,7 +14,7 @@ git checkout 4.1.00
 cd kokkos
 
 export GNU_VERSION=11
-export KOKKOS_VERSION=4.1.00
+export KOKKOS_VERSION=4.3.01
 
 module load gnu/$GNU_VERSION
 
@@ -33,13 +33,13 @@ make install
 
 # Build Kokkos for OpenMP and CUDA with gnu tool toolchain
 
-Note that cmake option `Kokkos_ENABLE_CUDA_LAMBDA` is deprecated since kokkos 4.1.00. Support for lambda function is required unconditionnally.
+Note that cmake option `Kokkos_ENABLE_CUDA_LAMBDA` is deprecated since kokkos 4.3.01. Support for lambda function is required unconditionnally.
 
 ```shell
 cd kokkos
 
 export GNU_VERSION=11
-export KOKKOS_VERSION=4.1.00
+export KOKKOS_VERSION=4.3.01
 export CUDA_VERSION=12.3
 
 module load gnu/$GNU_VERSION
