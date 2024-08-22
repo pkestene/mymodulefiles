@@ -13,8 +13,8 @@ git checkout 4.3.01
 ```shell
 cd kokkos
 
-export GNU_VERSION=11
-export KOKKOS_VERSION=4.3.01
+export GNU_VERSION=13
+export KOKKOS_VERSION=4.4.00
 
 module load gnu/$GNU_VERSION
 
@@ -38,9 +38,9 @@ Note that cmake option `Kokkos_ENABLE_CUDA_LAMBDA` is deprecated since kokkos 4.
 ```shell
 cd kokkos
 
-export GNU_VERSION=11
-export KOKKOS_VERSION=4.3.01
-export CUDA_VERSION=12.3
+export GNU_VERSION=13
+export KOKKOS_VERSION=4.4.00
+export CUDA_VERSION=12.5
 
 module load gnu/$GNU_VERSION
 module load cuda/$CUDA_VERSION
