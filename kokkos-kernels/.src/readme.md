@@ -5,7 +5,7 @@ Retrieve the latest available release of kokkos-kernels : 4.1.00
 ```shell
 git clone git@github.com:kokkos/kokkos-kernels.git
 cd kokkos-kernels
-git checkout 4.1.00
+git checkout 4.4.00
 ```
 
 # Build Kokkos-Kernels for OpenMP with gnu tool toolchain
@@ -13,9 +13,9 @@ git checkout 4.1.00
 ```shell
 cd kokkos-kernels
 
-export GNU_VERSION=11
-export KOKKOS_VERSION=4.1.00
-export KOKKOS_KERNELS_VERSION=4.1.00
+export GNU_VERSION=13
+export KOKKOS_VERSION=4.4.00
+export KOKKOS_KERNELS_VERSION=4.4.00
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
@@ -37,10 +37,10 @@ make install
 ```shell
 cd kokkos-kernels
 
-export GNU_VERSION=11
-export KOKKOS_VERSION=4.1.00
-export KOKKOS_KERNELS_VERSION=4.1.00
-export CUDA_VERSION=12.3
+export GNU_VERSION=13
+export KOKKOS_VERSION=4.4.00
+export KOKKOS_KERNELS_VERSION=4.4.00
+export CUDA_VERSION=12.5
 
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
