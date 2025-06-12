@@ -28,4 +28,4 @@ set     topdir          $env(HOME)/local/emacs-${version}
 conflict emacs
 setenv        EMACS_ROOT        $topdir
 prepend-path  PATH              $topdir/bin
-prepend-path  MANPATH           $topdir/share/man
+#prepend-path  MANPATH           $topdir/share/man
